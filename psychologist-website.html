@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doğukan Akbay | Psikolog</title>
+    <style>
+        :root {
+            --black: #000000;
+            --anthracite: #2c2c2c;
+            --dark-gray: #3a3a3a;
+            --medium-gray: #555555;
+            --light-gray: #cccccc;
+            --accent: #c0a080;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--anthracite);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(44, 44, 44, 0.7));
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 60px;
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero-text h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--accent);
+            font-weight: 300;
+        }
+        
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--black);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .hero-image img {
+            max-width: 80%;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        section.dark {
+            background-color: var(--anthracite);
+        }
+        
+        section.darker {
+            background-color: var(--black);
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 90%;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--dark-gray);
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .qualifications {
+            background-color: var(--anthracite);
+            padding: 40px;
+            border-radius: 5px;
+            margin-bottom: 50px;
+        }
+        
+        .qualifications h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .qualifications ul {
+            list-style-type: none;
+        }
+        
+        .qualifications li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .qualifications li:before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+        
+        .experience {
+            background-color: var(--anthracite);
+            padding: 40px;
+            border-radius: 5px;
+        }
+        
+        .experience h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .experience-item {
+            margin-bottom: 30px;
+        }
+        
+        .experience-item h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .experience-item .period {
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .contact-card {
+            background-color: var(--dark-gray);
+            padding: 30px;
+            border-radius: 5px;
+            width: calc(33.333% - 20px);
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-icon {
+            font-size: 36px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .contact-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .contact-form {
+            background-color: var(--anthracite);
+            padding: 40px;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: var(--medium-gray);
+            color: white;
+            border-radius: 3px;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background-color: var(--accent);
+            color: var(--black);
+            border: none;
+            padding: 12px 30px;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: white;
+        }
+        
+        footer {
+            background-color: var(--black);
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid var(--dark-gray);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            margin-bottom: 30px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            color: var(--light-gray);
+            margin: 0 10px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+                order: 2;
+            }
+            
+            .about-image {
+                order: 1;
+                margin-bottom: 40px;
+            }
+            
+            .contact-card {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 15px;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .hero-text h2 {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Doğukan Akbay</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Ana Sayfa</a></li>
+                    <li><a href="#about">Hakkımda</a></li>
+                    <li><a href="#services">Hizmetler</a></li>
+                    <li><a href="#qualifications">Yetkinlikler</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Doğukan Akbay</h1>
+                    <h2>Psikolog</h2>
+                    <p>Profesyonel yaklaşım ve kanıta dayalı terapiler ile ruh sağlığı ve psikolojik sorunlara kalıcı çözümler üretiyorum. Güvenli bir terapötik ilişki içerisinde kendinizi keşfetmeniz ve potansiyelinizi gerçekleştirmeniz için yanınızdayım.</p>
+                    <a href="#contact" class="cta-button">Randevu Al</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://resmim.net/cdn/2024/06/23/f2mSEc.jpg" alt="Doğukan Akbay">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="dark">
+        <div class="container">
+            <h2 class="section-title">Hakkımda</h2>
+            <div class="about-container">
+                <div class="about-text">
+                    <p>Psikolog Doğukan Akbay </p>
+					
+					<p>
+					</p>
+					
+                 <p>Lisans eğitimini %100 başarı bursu ile İstanbul Aydın Üniversitesi Psikoloji Ana Bilim Dalında tamamlamıştır. Almış olduğu Psikodinamik psikoterapi eğitimi içerisinde uygulamalı rol playlerle başlayan seans öğrenimi dört farklı danışmanlık ofisinde kendi danışanlarını almasıyla gelişerek devam etmiştir. Meslekteki 4 yılına yaklaşırken 700 saate yakın bir seans tecrübesi bulunmaktadır. Bu süreçte çeşitli yaş aralığına sahip danışanlarla çalışma fırsatına sahip olsa da ergen ve yetişkin danışanlar öncelikli çalışma alanını oluşturmaktadır.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://lunaalgipsikoloji.com/wp-content/uploads/2024/01/WhatsApp-Gorsel-2024-03-15-saat-04.50.03_87bfb04d-768x950.jpg" alt="Doğukan Akbay Ofis">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="darker">
+        <div class="container">
+            <h2 class="section-title">Hizmetler</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Bireysel Terapi</h3>
+                    <p>Depresyon, anksiyete bozuklukları, obsesif kompulsif bozukluk, travma sonrası stres bozukluğu gibi psikolojik sorunlarda bireysel terapi hizmeti sunuyorum. Kanıta dayalı yaklaşımlarla her danışana özel terapi planı oluşturuyorum.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Çift Terapisi</h3>
+                    <p>İlişki sorunları, iletişim problemleri, çatışma çözümü ve evlilik terapisi konularında çiftlere profesyonel destek sağlıyorum. İlişkinizdeki dinamikleri anlamak ve daha sağlıklı bir iletişim kurmanız için rehberlik ediyorum.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>EMDR Terapisi</h3>
+                    <p>Travma ve travma sonrası stres bozukluğu tedavisinde etkili bir yöntem olan EMDR (Göz Hareketleriyle Duyarsızlaştırma ve Yeniden İşleme) terapisi uyguluyorum. Travmatik deneyimlerin etkilerini azaltarak iyileşme sürecinizi destekliyorum.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Bilişsel Davranışçı Terapi</h3>
+                    <p>Düşünce, duygu ve davranış arasındaki ilişkiyi anlamaya ve yıkıcı düşünce kalıplarını değiştirmeye yönelik Bilişsel Davranışçı Terapi (BDT) ile danışanlarıma destek oluyorum.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Şema Terapi</h3>
+                    <p>Erken dönem yaşam deneyimlerinden kaynaklanan olumsuz düşünce ve davranış kalıplarını hedefleyen Şema Terapi ile köklü ve kalıcı değişim sağlıyorum.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Psikolojik Değerlendirme</h3>
+                    <p>Kişilik, zeka, dikkat, depresyon, anksiyete gibi alanlarda standardize edilmiş testler uygulayarak kapsamlı psikolojik değerlendirme hizmeti sunuyorum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="qualifications" class="dark">
+        <div class="container">
+            <h2 class="section-title">Yetkinlikler ve Deneyim</h2>
+            <div class="qualifications">
+                <h3>Eğitim</h3>
+                <ul>
+                    <li>İstanbul Aydın Üniversitesi Psikoloji Ana Bilim Dalı</li>
+                    
+                </ul>
+            </div>
+            <div class="experience">
+                <h3>Mesleki Deneyim</h3>
+                <div class="experience-item">
+                    <h4>Özel Klinik, Klinik Psikolog</h4>
+                    <span class="period">2020 - Günümüz</span>
+                    <p>Kendi kliniğimde bireysel ve çift terapisi hizmetleri sunuyorum. Depresyon, anksiyete bozuklukları, travma sonrası stres bozukluğu, obsesif kompulsif bozukluk ve ilişki sorunları üzerine çalışıyorum.</p>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="darker">
+        <div class="container">
+            <h2 class="section-title">İletişim</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Adres</h3>
+                    <p>İzmit Merkez<br>İzmit, Kocaeli</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Telefon</h3>
+                    <p>+90 (535) 495 75 99</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>E-posta</h3>
+                    <p>info@dogukanakbay.com</p>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Randevu Formu</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Ad Soyad</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesajınız</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Gönder</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#services">Hizmetler</a></li>
+                <li><a href="#qualifications">Yetkinlikler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/psk.dogukanakbay/"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Doğukan Akbay. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+</body>
+</html>
